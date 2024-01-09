@@ -1,18 +1,13 @@
-import PostModel from "../models/post.js"
+import PostModel from "../models/post.js";
 
 
-export const createPost = (req,res) => {
-    const newPost = new PostModel(req.body);
-         newPost.save();
-        res.status(200).json("New Post Created!")
+export const createPost = async (req, res) => {
+    try {
+      const newPost = new PostModel(req.body);
+      await newPost.save();
+      res.status(201).json(newPost);
+    } catch (error) {
+      res.status(500).json({ error: error.message });
     }
-
-    
-export const getPost =  (req, res) => {
-        const id = req.params.id;
-        const post =  PostModel.findById(id).exec();
-        res.status(200).json(post);
-      };
-
-
-
+  };
+  

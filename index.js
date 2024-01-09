@@ -9,14 +9,9 @@ connectDB();
 
 app.use('/post' , postRoutes);
 
-const PORT = 8090;
+const PORT = 8210;
 
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-
-
-
-
